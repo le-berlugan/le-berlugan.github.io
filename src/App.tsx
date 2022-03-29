@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import Resume from "./containers/resume";
+import { en } from './data/en.js'
+import { fr } from './data/fr.js';
+import {JsonResumeType} from "./types"
+import { useState } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {	
+	const data: {[key: string]: JsonResumeType} = {"fr": fr, "en": en};
+	const nav_language: string = navigator.language.toLowerCase();
+	const [language, setLanguage] = useState((nav_language === "fr-fr") ? "fr": "en");
+
+	const changeLanguage = (language: string): void => {
+		setLanguage(language);
+	}
+
+	return (
+		<Resume data={data[language]} onChangeLanguage={changeLanguage} />
+	);
 }
 
 export default App;
