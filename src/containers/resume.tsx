@@ -41,11 +41,11 @@ const Resume = (props:IResumeProps) => {
 				<main className="col-md-9">
 					<div className="inner">
 						<Routes>
-							<Route path="my-website/map" element={<GoogleMap mapHeight={heightpapa} />} />
-							<Route path="my-website/projects" element={
+							<Route path="map" element={<GoogleMap mapHeight={heightpapa} />} />
+							<Route path="projects" element={
 								<Project projectData={props.data.project} />} >
 							</Route>
-							<Route path="my-website/" element={
+							<Route path="" element={
 								<Home
 									aboutData={aboutData} 
 									workData={props.data.work} 

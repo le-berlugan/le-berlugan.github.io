@@ -9,7 +9,7 @@ const Work = (props:IWorkProps) => {
     const getWorkAttachments = (value:WorkItemType) => {
 		return value.attachments.map((item, index) => {
 			return (
-				<a key={"attachment_" + index} href={item.url} rel="noreferrer noopener" className="tooltips-work-exp" target='_blank'><i className={item.icon}></i><span>{item.label}</span></a>
+				<a key={"attachment_" + index} href={process.env.PUBLIC_URL + "/pdf/" + item.url} rel="noreferrer noopener" className="tooltips-work-exp" target='_blank'><i className={item.icon}></i><span>{item.label}</span></a>
 			);
 		});
     }
