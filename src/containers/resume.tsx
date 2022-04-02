@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import Menu from "./menu"
 import Profile from "./profile"
 import {Routes ,Route} from "react-router-dom";
@@ -6,7 +5,6 @@ import Home from "./home"
 import Project from "./project"
 import GoogleMap from "./googlemap"
 import {JsonResumeType} from "../types"
-import { useState } from 'react';
 
 export interface IResumeProps {
 	data: JsonResumeType;
@@ -14,14 +12,6 @@ export interface IResumeProps {
 }
 
 const Resume = (props:IResumeProps) => {	
-	const ref = useRef(null);
-	const [heightpapa, setHeightMap] = useState(0);
-
-	useEffect(() => {
-		if (ref !== null && ref.current !== null) {
-			setHeightMap(ref.current!["offsetHeight"]);
-		}
-	}, []);
 
 	const profile = props.data.basics;
 	const aboutData = { 
@@ -34,15 +24,15 @@ const Resume = (props:IResumeProps) => {
 			<Menu menuItemData={profile.menu} />
 			<div className="row">
 				<aside className="col-md-3">
-					<div ref={ref} className="inner">
+					<div className="inner">
 						<Profile profileData={profile} onChangeLanguage={props.onChangeLanguage} />
 					</div>
 				</aside>
 				<main className="col-md-9">
 					<div className="inner">
 						<Routes>
-							<Route path="map" element={<GoogleMap mapHeight={heightpapa} />} />
-							<Route path="projects" element={
+							<Route path="/map" element={<GoogleMap />} />
+							<Route path="/projects" element={
 								<Project projectData={props.data.project} />} >
 							</Route>
 							<Route path="" element={
