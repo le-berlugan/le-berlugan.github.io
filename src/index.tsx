@@ -9,7 +9,7 @@ import {
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router basename="le-berlugan.github.io/">
+    <Router basename="/">
       <App />
     </Router>
   </React.StrictMode>,
