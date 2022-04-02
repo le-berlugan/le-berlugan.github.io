@@ -1,6 +1,6 @@
 {
-  "name": "my-website",
-  "homepage": "http://le-berlugan.github.io/my-website",
+  "name": "my-personnal-website",
+  "homepage": "http://le-berlugan.github.io/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
