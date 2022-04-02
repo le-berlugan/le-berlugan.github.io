@@ -31,11 +31,11 @@ const Resume = (props:IResumeProps) => {
 				<main className="col-md-9">
 					<div className="inner">
 						<Routes>
-							<Route path="map" element={<GoogleMap />} />
-							<Route path="projects" element={
+							<Route path={process.env.PUBLIC_URL + "/map"} element={<GoogleMap />} />
+							<Route path={process.env.PUBLIC_URL + "/projects"} element={
 								<Project projectData={props.data.project} />} >
 							</Route>
-							<Route path="" element={
+							<Route path={process.env.PUBLIC_URL + "/"} element={
 								<Home
 									aboutData={aboutData} 
 									workData={props.data.work} 

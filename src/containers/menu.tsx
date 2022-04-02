@@ -10,7 +10,7 @@ const Menu = (props:IMenuProps) => {
 		return props.menuItemData.map((item, index) => {
 			return (
 				<li key={"menu_" + index}>
-					<Link className="skills-list"to={item.url}><span className="label"><span className={item.icon}></span>{item.label}</span></Link>
+					<Link className="skills-list" to={process.env.PUBLIC_URL + item.url}><span className="label"><span className={item.icon}></span>{item.label}</span></Link>
 				</li>
 			);
 		});	
