@@ -84,7 +84,7 @@ export const en = {
       "attachments": [{
         "label": "Lettre de recommandation",
         "icon": "fa fa-lg fa-file-pdf-o",
-        "url": "pdf/attachments/Letter of recommandation - Certificat de Travail - Jacques Daudel.pdf"
+        "url": "Letter of recommandation - Certificat de Travail - Jacques Daudel.pdf"
       }],
       "highlights": ["Python", "Vuejs/React", "TypeScript", "Open source", "Docker", "Git", "Elasticsearch", "Kibana", "MongoDB", "Azure DevOps", "SonarQube", "Vessel tracking", "AIS data"]
     }, {
@@ -110,23 +110,23 @@ export const en = {
       "attachments": [{
         "label": "Letter of recommandation",
         "icon": "fa fa-lg fa-file-pdf-o",
-        "url": "pdf/attachments/Letter of recommandation - Harald Kosch.pdf"
+        "url": "Letter of recommandation - Harald Kosch.pdf"
       }, {
         "label": "Letter of recommandation",
         "icon": "fa fa-lg fa-file-pdf-o",
-        "url": "pdf/attachments/Letter of recommandation - Michael Granitzer.pdf"
+        "url": "Letter of recommandation - Michael Granitzer.pdf"
       }, {
         "label": "Letter of recommandation",
         "icon": "fa fa-lg fa-file-pdf-o",
-        "url": "pdf/attachments/Letter of recommandation - Elod egyed zsigmond.pdf"
+        "url": "Letter of recommandation - Elod egyed zsigmond.pdf"
       }, {
         "label": "Master thesis",
         "icon": "fa fa-lg fa-file-pdf-o",
-        "url": "pdf/attachments/Anthony FARAUT - Master thesis.pdf"
+        "url": "Anthony FARAUT - Master thesis.pdf"
       }, {
         "label": "Final presentation",
         "icon": "fa fa-lg fa-file-pdf-o",
-        "url": "pdf/attachments/Passau internship - Final presentation.pdf"
+        "url": "Passau internship - Final presentation.pdf"
       }],
       "highlights": ["Java", "Social networks", "Data mining", "Machine learning (Word2vec, Doc2vec)", "Support Vector Machine (SVM)", "Classification", "Clustering", "MongoDB", "SCRUM", "Knime"]
     }, {
@@ -141,7 +141,7 @@ export const en = {
       "attachments": [{
         "label": "Letter of recommandation",
         "icon": "fa fa-lg fa-file-pdf-o",
-        "url": "pdf/attachments/Letter of recommandation - Certificat de Travail - Charline Chabbert.pdf"
+        "url": "Letter of recommandation - Certificat de Travail - Charline Chabbert.pdf"
       }],
       "highlights": ["C#", ".NET 4.0", "WPF/MVVM", "SQL Server", "NHibernate", "SSRS reports", "SCRUM"]
     }, {
@@ -156,11 +156,11 @@ export const en = {
       "attachments": [{
         "label": "Letter of recommandation",
         "icon": "fa fa-lg fa-file-pdf-o",
-        "url": "pdf/attachments/Letter of recommandation - Paul Ventadoux.pdf"
+        "url": "Letter of recommandation - Paul Ventadoux.pdf"
       }, {
         "label": "Letter of recommandation",
         "icon": "fa fa-lg fa-file-pdf-o",
-        "url": "pdf/attachments/Letter of recommandation - Luis Pinto Domingues.pdf"
+        "url": "Letter of recommandation - Luis Pinto Domingues.pdf"
       }],
       "highlights": ["Python", "Django", "JavaScript", "JSON", "Mercurial", "Shell - Cron", "MongoDB", "SCRUM"]
     }, {
