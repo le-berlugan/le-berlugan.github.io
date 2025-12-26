@@ -1,16 +1,15 @@
+import React from 'react';
 import { marked } from "marked";
 
-export const renderMardown = (mardownData: string) => {
-    const rawMarkup = marked(mardownData, {sanitize: false});
-    return { __html: rawMarkup };
-}
+export const renderMarkdown = (markdownData: string) => {
+  const rawMarkup = marked(markdownData, { sanitize: false });
+  return { __html: rawMarkup };
+};
 
-export const getHighlights = (highlights: string[]) => {
-    return highlights.map((item) => {
-        return (
-            <li key={item} >
-                <span className="label">{item}</span>
-            </li>
-        );
-    });
-}
+export const getHighlights = (highlights: string[]): JSX.Element[] => {
+  return highlights.map((item) => (
+    <li key={item}>
+      <span className="label">{item}</span>
+    </li>
+  ));
+};

@@ -1,4 +1,4 @@
-import { renderMardown, getHighlights } from '../utils';
+import { renderMarkdown, getHighlights } from '../utils';
 import {WorkType, WorkItemType} from "../types"
 
 export interface IWorkProps {
@@ -16,7 +16,7 @@ const Work = (props:IWorkProps) => {
 
     const getWorkExperience = () => {
 		return props.workData.items.map((val:WorkItemType, index) => {
-			const markdownData = renderMardown(val.summary);
+			const markdownData = renderMarkdown(val.summary);
 			return (
 				<div key={"work_experience_" + index}>
 					<div className="row">

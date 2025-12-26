@@ -1,4 +1,4 @@
-import { renderMardown } from '../utils';
+import { renderMarkdown } from '../utils';
 import {AboutType} from "../types"
 
 export interface IAboutProps {
@@ -6,7 +6,7 @@ export interface IAboutProps {
 }
 
 const About = (props:IAboutProps) => {		
-	const markdownData = renderMardown(props.aboutData.summary); 
+	const markdownData = renderMarkdown(props.aboutData.summary); 
 	return (
 		<section className="about">
 			<h2 className="text-uppercase">

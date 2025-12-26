@@ -1,5 +1,5 @@
 import 'font-awesome/css/font-awesome.min.css';
-import { renderMardown } from '../utils';
+import { renderMarkdown } from '../utils';
 import {BasicsType, ProfileType} from "../types"
 
 export interface IProfileProps {
@@ -12,7 +12,7 @@ const US_UK_FLAG = "us_uk.svg";
 
 const Profile = (props:IProfileProps) => {
 
-    const markdownData = renderMardown(props.profileData.information); 
+    const markdownData = renderMarkdown(props.profileData.information); 
     const profile = props.profileData;
 
     const getProfileLinks = () => {

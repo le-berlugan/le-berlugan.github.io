@@ -1,4 +1,4 @@
-import { renderMardown, getHighlights } from '../utils';
+import { renderMarkdown, getHighlights } from '../utils';
 import {ProjectType, ProjectItemType} from "../types"
 
 export interface IProjectProps {
@@ -18,7 +18,7 @@ const Project = (props:IProjectProps) => {
 
     const getProject = () => {
 		return props.projectData.items.map((val: ProjectItemType) => {
-			const markdownData = renderMardown(val.summary);
+			const markdownData = renderMarkdown(val.summary);
 			return (
 				<div key={val.name}>
 					<div className="row">

@@ -1,13 +1,14 @@
-import {EducationType} from "../types"
+import {EducationType, EducationItemType} from "../types"
 
 export interface IEducationProps {
     educationData: EducationType;
 }
 
+
 const Education = (props:IEducationProps) => {	    
 
-    const getCourses = (item) => {
-        return item.courses.map((course) => {
+    const getCourses = (item: EducationItemType) => {
+        return item.courses.map((course: string) => {
             return (
                 <li key={course} >
                     <span>{course}</span>
@@ -17,7 +18,7 @@ const Education = (props:IEducationProps) => {
     }
 
     const getEducation = () => {
-        return props.educationData.items.map((item) => {
+        return props.educationData.items.map((item: EducationItemType) => {
             return (
                 <div key={item.startDate + item.endDate}>
                     <div  className="row">
