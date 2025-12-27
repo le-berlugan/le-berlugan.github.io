@@ -1,20 +1,25 @@
+import React from 'react';
 import { renderMarkdown } from '../utils';
 import {AboutType} from "../types"
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import PersonIcon from '@mui/icons-material/Person';
 
 export interface IAboutProps {
-    aboutData: AboutType;
+	aboutData: AboutType;
 }
 
-const About = (props:IAboutProps) => {		
-	const markdownData = renderMarkdown(props.aboutData.summary); 
+const About: React.FC<IAboutProps> = (props) => {
+	const markdownData = renderMarkdown(props.aboutData.summary);
 	return (
-		<section className="about">
-			<h2 className="text-uppercase">
-				<i className="fa fa-lg fa-user"></i>
-				{props.aboutData.title}
-			</h2>
+		<Paper variant="outlined" sx={{p:2}} className="about">
+			<Box display="flex" alignItems="center" mb={1}>
+				<PersonIcon sx={{mr:1}} />
+				<Typography variant="h6" component="h2">{props.aboutData.title}</Typography>
+			</Box>
 			<div className="justify-align" dangerouslySetInnerHTML={markdownData} />
-		</section>
+		</Paper>
 	);
 }
 

@@ -1,81 +1,80 @@
-import 'font-awesome/css/font-awesome.min.css';
+import React from 'react';
 import { renderMarkdown } from '../utils';
-import {BasicsType, ProfileType} from "../types"
+import { BasicsType, ProfileType } from '../types';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
+import Stack from '@mui/material/Stack';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import Link from '@mui/material/Link';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import CodeIcon from '@mui/icons-material/Code';
+import ChatIcon from '@mui/icons-material/Chat';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import LanguageIcon from '@mui/icons-material/Language';
 
 export interface IProfileProps {
     profileData: BasicsType;
     onChangeLanguage: Function;
 }
 
-const FR_FLAG = "fr.svg";
-const US_UK_FLAG = "us_uk.svg";
-
-const Profile = (props:IProfileProps) => {
-
-    const markdownData = renderMarkdown(props.profileData.information); 
+const Profile: React.FC<IProfileProps> = (props) => {
     const profile = props.profileData;
-
-    const getProfileLinks = () => {
-		return profile.profiles.map((profileLink: ProfileType, index) => {
-            return (
-                <li key={"profile_link_" + index}>
-                    <a className={profileLink.icon + " fa-2x tooltips"} rel="noreferrer noopener" href={profileLink.url} target="_blank"><span>{profileLink.network}</span></a>
-                </li>                
-            );
-        });
-    }
+    const markdownData = renderMarkdown(profile.information);
 
     return (
-        <div className="profile">
-            <div className="profileImg">
-                <img className="img-circle center-block" src={process.env.PUBLIC_URL + "/images/" + profile.picture} alt="myself" />
-            </div>
-            <h1 className="text-center">{profile.name}</h1>
-            <h2 className="text-center">{profile.label}</h2>
-            <div className="text-center">
-                <img src={process.env.PUBLIC_URL + "/images/flags/" + FR_FLAG}  onClick={() => {props.onChangeLanguage("fr")}} className="drap" alt="fr_FR" />
-                <img src={process.env.PUBLIC_URL + "/images/flags/" + US_UK_FLAG}  onClick={() => {props.onChangeLanguage("en")}} className="drap" alt="en_US" />
-            </div>            
-            <div className="divider"></div>
-                <div className="row">
-                    <div className="col-md-1">
-                        <i className="fa fa-lg fa-location-arrow"></i>
-                    </div>
-                    <div className="col-md-10">
-                        {profile.location.city}, {profile.location.region}, {profile.location.countryCode}
-                    </div>            
-                </div>
-                <div className="row">
-                    <div className="col-md-1">
-                        <i className="fa fa-lg fa-envelope"></i>
-                    </div>
-                    <div className="col-md-10">
-                        <a href={"mailto:" + profile.email} >{profile.email}</a>
-                    </div>            
-                </div>
+        <Card elevation={3}>
+            <CardContent sx={{ textAlign: 'center' }}>
+                <Stack spacing={1} alignItems="center">
+                    <Avatar alt={profile.name} src={process.env.PUBLIC_URL + '/images/' + profile.picture} sx={{ width: 120, height: 120 }} />
+                    <Typography variant="h6">{profile.name}</Typography>
+                    <Typography variant="subtitle1" color="text.secondary">{profile.label}</Typography>
+                    <Stack direction="row" spacing={1} sx={{ mt: 1 }}>
+                        <img src={process.env.PUBLIC_URL + '/images/flags/fr.svg'} onClick={() => props.onChangeLanguage('fr')} style={{ cursor: 'pointer', width: 36 }} alt="fr" />
+                        <img src={process.env.PUBLIC_URL + '/images/flags/us_uk.svg'} onClick={() => props.onChangeLanguage('en')} style={{ cursor: 'pointer', width: 36 }} alt="en" />
+                    </Stack>
+                </Stack>
 
-            <div className="divider"></div>
-            <ul className="profileLinks list-inline text-center">
-                { getProfileLinks() }
-                {/* <li>
-                    <a className="fa fa-linkedin-square fa-2x tooltips" rel="noreferrer noopener" href={profile.profiles[0].url} target="_blank"><span>{profile.profiles[0].network}</span></a>
-                </li>
-                <li>
-                    <a className="fa fa-github fa-2x tooltips" rel="noreferrer noopener" href={profile.profiles[1].url} target="_blank"><span>{profile.profiles[1].network}</span></a>
-                </li>
-                <li>
-                    <a className="fa fa-stack-overflow fa-2x tooltips" rel="noreferrer noopener" href={profile.profiles[2].url} target="_blank"><span>{profile.profiles[2].network}</span></a>
-                </li>
-                <li>
-                    <a className="fa fa-skype fa-2x tooltips" rel="noreferrer noopener" href={profile.profiles[3].url} target="_blank"><span>{profile.profiles[3].network}</span></a>
-                </li>
-                <li>
-                    <a className="fa fa-file-pdf-o fa-2x tooltips" rel="noreferrer noopener" href={profile.profiles[4].url} target="_blank"><span>{profile.profiles[4].network}</span></a>
-                </li> */}
-            </ul>
-            <div className="divider"></div>
-            <div className="justify-align" dangerouslySetInnerHTML={markdownData} />                
-        </div>
-    );   
-}
+                <Divider sx={{ my: 2 }} />
+
+                <Typography variant="body2" sx={{ mb: 1 }}>
+                    {profile.location.city}, {profile.location.region}, {profile.location.countryCode}
+                </Typography>
+                <Typography variant="body2" sx={{ mb: 1 }}>
+                    <Link href={`mailto:${profile.email}`}>{profile.email}</Link>
+                </Typography>
+
+                <Divider sx={{ my: 2 }} />
+
+                <Stack direction="row" spacing={1} justifyContent="center" sx={{ mb: 2 }}>
+                    {profile.profiles.map((p: ProfileType, i: number) => {
+                        const renderIcon = () => {
+                            const net = (p.network || '').toLowerCase();
+                            if (net.includes('linkedin')) return <LinkedInIcon />;
+                            if (net.includes('github')) return <GitHubIcon />;
+                            if (net.includes('stack')) return <CodeIcon />;
+                            if (net.includes('skype')) return <ChatIcon />;
+                            if (net.includes('resume') || net.includes('cv') || p.url?.endsWith('.pdf')) return <PictureAsPdfIcon />;
+                            return <LanguageIcon />;
+                        }
+
+                        return (
+                            <IconButton key={i} component="a" href={p.url} target="_blank" rel="noopener noreferrer" aria-label={p.network}>
+                                {renderIcon()}
+                            </IconButton>
+                        );
+                    })}
+                </Stack>
+
+                <Divider sx={{ my: 2 }} />
+
+                <div className="justify-align" dangerouslySetInnerHTML={markdownData} />
+            </CardContent>
+        </Card>
+    );
+};
+
 export default Profile;

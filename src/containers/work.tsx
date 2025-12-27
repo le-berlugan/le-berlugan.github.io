@@ -1,54 +1,71 @@
+import React from 'react';
 import { renderMarkdown, getHighlights } from '../utils';
 import {WorkType, WorkItemType} from "../types"
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
+import IconButton from '@mui/material/IconButton';
+import Avatar from '@mui/material/Avatar';
 
 export interface IWorkProps {
-    workData: WorkType;
+	workData: WorkType;
 }
 
-const Work = (props:IWorkProps) => {
-    const getWorkAttachments = (value:WorkItemType) => {
+const Work: React.FC<IWorkProps> = (props) => {
+	const getWorkAttachments = (value:WorkItemType) => {
 		return value.attachments.map((item, index) => {
 			return (
-				<a key={"attachment_" + index} href={process.env.PUBLIC_URL + "/pdf/attachments/" + item.url} rel="noreferrer noopener" className="tooltips-work-exp" target='_blank'><i className={item.icon}></i><span>{item.label}</span></a>
+				<IconButton key={"attachment_" + index} component={Link} href={process.env.PUBLIC_URL + "/pdf/attachments/" + item.url} target="_blank" rel="noreferrer noopener" aria-label={item.label}>
+					<i className={item.icon} />
+				</IconButton>
 			);
 		});
-    }
+	}
 
-    const getWorkExperience = () => {
+	const getWorkExperience = () => {
 		return props.workData.items.map((val:WorkItemType, index) => {
 			const markdownData = renderMarkdown(val.summary);
 			return (
-				<div key={"work_experience_" + index}>
-					<div className="row">
-						<div className="col-sm-2">
-							<a href={val.website} rel="noreferrer noopener" target="_blank"><img className="width-picture-items" src={process.env.PUBLIC_URL + "/images/companies/" + val.picture} alt="firm_picture" /></a>  
-							<div className="work-exp-link">
-								{getWorkAttachments(val)}
-							</div>						
-						</div>
-						<div className="col-sm-10">
-							<strong>
-								{val.position}, <a href={val.website} rel="noreferrer noopener" target="_blank">{val.company}</a> / {val.place}
-								<div className="dates">
+				<Box key={"work_experience_" + index} mb={2}>
+					<Paper variant="outlined" sx={{p:2}}>
+						<Grid container spacing={2} alignItems="flex-start">
+							<Grid item xs={12} sm={3}>
+								<Box component={Link} href={val.website} target="_blank" rel="noreferrer noopener" sx={{display: 'block', textAlign: 'center'}}>
+									<Avatar
+										variant="square"
+										src={process.env.PUBLIC_URL + "/images/companies/" + val.picture}
+										alt={val.company}
+										sx={{ width: 120, height: 60, mx: 'auto' }}
+									/>
+								</Box>
+								<Box mt={1} display="flex" justifyContent="center">{getWorkAttachments(val)}</Box>
+							</Grid>
+							<Grid item xs={12} sm={9}>
+								<Typography variant="subtitle1" fontWeight={700}>
+									{val.position}, <Link href={val.website} target="_blank" rel="noreferrer noopener">{val.company}</Link> / {val.place}
+								</Typography>
+								<Typography variant="caption" color="text.secondary" display="block" sx={{mb:1}}>
 									{val.startDate} - {val.endDate}
-								</div>							
-							</strong>
-							<div className="justify-align" dangerouslySetInnerHTML={markdownData} />
-							<ul className="skills-list list-inline">{getHighlights(val.highlights)}</ul>
-						</div>
-					</div>
-					<div className="divider-items"></div>
-				</div>
+								</Typography>
+								<div className="justify-align" dangerouslySetInnerHTML={markdownData} />
+								<Box mt={1}>
+									<ul style={{paddingLeft: 16, margin: 0}}>{getHighlights(val.highlights)}</ul>
+								</Box>
+							</Grid>
+						</Grid>
+					</Paper>
+				</Box>
 			);
 		});
-    }
+	}
 
 	return (
 		<section className="work">
-			<h2 className="text-uppercase">
-				<i className="fa fa-lg fa-cubes"></i>
-				{props.workData.title}
-			</h2>
+			<Typography variant="h5" component="h2" gutterBottom>
+				<i className="fa fa-lg fa-cubes" style={{marginRight:8}}></i> {props.workData.title}
+			</Typography>
 			{getWorkExperience()}
 		</section>
 	);

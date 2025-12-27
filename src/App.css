@@ -39,7 +39,6 @@
 
 body {
   background: #f0f0f0;
-  margin-top: 15px;
 }
 aside, main {
   padding: 10px!important;
@@ -182,42 +181,15 @@ aside .inner, main .inner {
 }
 
 body {
-  background: #dddbd1;
-  font-size: 1.5rem;
+  background: #f0f0f0;
+  font-size: 1rem;
   font-family: 'Nunito', sans-serif;
-}
-
-.container::before {
-    position: fixed;
-    z-index: -1;
-    background-color: #009688;
-    width: 100%;
-    height: 127px;
-    content: '';
-    -webkit-animation: bar-slide .2s cubic-bezier(.1,.82,.25,1);
-    animation: bar-slide .2s cubic-bezier(.1,.82,.25,1);
-    top: 0;
-    left: 0;
-}
-
-.container::after {
-    position: fixed;
-    z-index: 2;
-    background-color: #009688;
-    width: 100%;
-    height: 57px;
-    content: '';
-    -webkit-animation: bar-slide .2s cubic-bezier(.1,.82,.25,1);
-    animation: bar-slide .2s cubic-bezier(.1,.82,.25,1);
-    top: 0;
-    left: 0;
 }
 
 .container {
     margin: 0 auto;
     max-width: 1200px; 
     width: 90%;
-    top: 50px;
 }
 
 .label-success {
@@ -254,10 +226,11 @@ body {
     display: inline-block;
     margin: 2px 2px 2px 0;
     border-radius: 0;
-    -webkit-transition: color 0.15s ease, background 0.15s ease, border 0.15s ease;
-    -moz-transition: color 0.15s ease, background 0.15s ease, border 0.15s ease;
-    -ms-transition: color 0.15s ease, background 0.15s ease, border 0.15s ease;
-    -o-transition: color 0.15s ease, background 0.15s ease, border 0.15s ease;
+  -webkit-transition: color 0.15s ease, background 0.15s ease, border 0.15s ease;
+  -moz-transition: color 0.15s ease, background 0.15s ease, border 0.15s ease;
+  -ms-transition: color 0.15s ease, background 0.15s ease, border 0.15s ease;
+  -o-transition: color 0.15s ease, background 0.15s ease, border 0.15s ease;
+  transition: color 0.15s ease, background 0.15s ease, border 0.15s ease;
 }
 
 .drap{

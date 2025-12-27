@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { AppThemeProvider } from './theme';
 import reportWebVitals from './reportWebVitals';
 import {
   HashRouter as Router
@@ -9,9 +10,11 @@ import {
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <AppThemeProvider>
+      <Router>
+        <App />
+      </Router>
+    </AppThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
